@@ -4,5 +4,25 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>this is My Custom Captcha Image.</p>
+
+    <img id="captchaID" src="@Url.Action("CaptchaImage")" alt="captcha" />
+    <i id="refresh" class="fa fa-refresh" style="font-size:20px;cursor:pointer;">refresh</i>
+
+
 </div>
+@section Scripts{
+
+    <script>
+
+        document.getElementById('refresh').onclick = handleClick;
+
+        function handleClick() {
+            var d = new Date();
+            $('#captchaID').attr('src', "/Home/CaptchaImage?" + d.getTime());
+
+        }
+
+    </script>
+
+}
